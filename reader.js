@@ -5,6 +5,7 @@ const fs = require('fs').promises;
 const fileReading = () => {
   return fs.readFile(process.argv[2], { encoding: 'utf8' });
 };
+
 fileReading().then(data => {
-  socket.emit('file-read', data);
+  socket.emit('file-read', { text: data, path: process.argv[2] });
 });
